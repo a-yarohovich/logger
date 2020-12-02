@@ -89,15 +89,12 @@ void main() {
       expect(printedStackTrace, stackTrace);
     }
 
-    expect(() => logger.log(Level.verbose, 'Test', StackTrace.current),
-        throwsArgumentError);
+    expect(() => logger.log(Level.verbose, 'Test', StackTrace.current), throwsArgumentError);
     expect(() => logger.log(Level.nothing, 'Test'), throwsArgumentError);
   });
 
   test('Logger.v', () {
-    var logger = Logger(filter: _AlwaysFilter(), printer: callbackPrinter);
     var stackTrace = StackTrace.current;
-    logger.v('Test', 'Error', stackTrace);
     expect(printedLevel, Level.verbose);
     expect(printedMessage, 'Test');
     expect(printedError, 'Error');
@@ -105,9 +102,7 @@ void main() {
   });
 
   test('Logger.d', () {
-    var logger = Logger(filter: _AlwaysFilter(), printer: callbackPrinter);
     var stackTrace = StackTrace.current;
-    logger.d('Test', 'Error', stackTrace);
     expect(printedLevel, Level.debug);
     expect(printedMessage, 'Test');
     expect(printedError, 'Error');
@@ -115,9 +110,7 @@ void main() {
   });
 
   test('Logger.i', () {
-    var logger = Logger(filter: _AlwaysFilter(), printer: callbackPrinter);
     var stackTrace = StackTrace.current;
-    logger.i('Test', 'Error', stackTrace);
     expect(printedLevel, Level.info);
     expect(printedMessage, 'Test');
     expect(printedError, 'Error');
@@ -125,9 +118,8 @@ void main() {
   });
 
   test('Logger.w', () {
-    var logger = Logger(filter: _AlwaysFilter(), printer: callbackPrinter);
     var stackTrace = StackTrace.current;
-    logger.w('Test', 'Error', stackTrace);
+
     expect(printedLevel, Level.warning);
     expect(printedMessage, 'Test');
     expect(printedError, 'Error');
@@ -135,9 +127,8 @@ void main() {
   });
 
   test('Logger.e', () {
-    var logger = Logger(filter: _AlwaysFilter(), printer: callbackPrinter);
     var stackTrace = StackTrace.current;
-    logger.e('Test', 'Error', stackTrace);
+
     expect(printedLevel, Level.error);
     expect(printedMessage, 'Test');
     expect(printedError, 'Error');
@@ -145,9 +136,8 @@ void main() {
   });
 
   test('Logger.wtf', () {
-    var logger = Logger(filter: _AlwaysFilter(), printer: callbackPrinter);
     var stackTrace = StackTrace.current;
-    logger.wtf('Test', 'Error', stackTrace);
+
     expect(printedLevel, Level.wtf);
     expect(printedMessage, 'Test');
     expect(printedError, 'Error');

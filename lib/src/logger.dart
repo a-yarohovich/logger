@@ -70,39 +70,28 @@ class Logger {
     _output.init();
   }
 
-  /// Log a message at level [Level.verbose].
-  void v(dynamic message, [dynamic error, StackTrace stackTrace]) {
-    log(Level.verbose, message, error, stackTrace);
-  }
-
   /// Log a message at level [Level.debug].
-  void d(dynamic message, [dynamic error, StackTrace stackTrace]) {
-    log(Level.debug, message, error, stackTrace);
+  void d(dynamic message) {
+    log(Level.debug, message);
   }
 
   /// Log a message at level [Level.info].
-  void i(dynamic message, [dynamic error, StackTrace stackTrace]) {
-    log(Level.info, message, error, stackTrace);
+  void i(dynamic message) {
+    log(Level.info, message);
   }
 
   /// Log a message at level [Level.warning].
-  void w(dynamic message, [dynamic error, StackTrace stackTrace]) {
-    log(Level.warning, message, error, stackTrace);
+  void w(dynamic message) {
+    log(Level.warning, message);
   }
 
   /// Log a message at level [Level.error].
-  void e(dynamic message, [dynamic error, StackTrace stackTrace]) {
-    log(Level.error, message, error, stackTrace);
-  }
-
-  /// Log a message at level [Level.wtf].
-  void wtf(dynamic message, [dynamic error, StackTrace stackTrace]) {
-    log(Level.wtf, message, error, stackTrace);
+  void e(dynamic message) {
+    log(Level.error, message);
   }
 
   /// Log a message with [level].
-  void log(Level level, dynamic message,
-      [dynamic error, StackTrace stackTrace]) {
+  void log(Level level, dynamic message, [dynamic error, StackTrace stackTrace]) {
     if (!_active) {
       throw ArgumentError('Logger has already been closed.');
     } else if (error != null && error is StackTrace) {
@@ -136,3 +125,11 @@ class Logger {
     _output.destroy();
   }
 }
+
+// Default logger
+var dlog = Logger(
+  printer: LitePrettyPrinter(
+    errorMethodCount: 8, // number of method calls if stacktrace is provided
+    lineLength: 240, // width of the output
+  ),
+);
